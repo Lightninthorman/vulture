@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<% include ../partials/head.ejs %>
+<body>
+    <div class="container">
+        <h1>Update Your Carcass</h1>
+        <form  action="/dashboard/<%=carcass.id%>?_method=PUT" method="post">
+            <div class="form-group">
+                <label for="building">Building:</label>
+                <input type="text" name="building" value="<%=carcass.building%>">
+            </div>
+            <div class="form-group">
+                <label for="floor">Floor:</label>
+                <input type="text" name="floor" value="<%=carcass.floor%>">
+            </div>
+            <div class="form-group">
+                <label for="room">Room:</label>
+                <input type="text" name="room" value="<%=carcass.room%>">
+            </div>
+            <div class="form-group">
+                <label for="rmName">Room Name:</label>
+                <input type="text" name="rmName" value="<%=carcass.rmName%>">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" rows="8" cols="80"><%=carcass.description%></textarea>
+            </div>
+            <input class="btn btn-success" type="submit" value="Update">
+            <a class="btn btn-secondary" href="/dashboard">Cancel</a>
+        </form>
+    </div>
+
+</body>
+</html>

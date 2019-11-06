@@ -6,19 +6,24 @@
             <h1>Dashboard</h1>
             <div class="row">
                 <% for (let i in carcass){%>
-                    <div class="col">
-                        Building: <%=carcass[i].building%><br>
-                        Floor: <%=carcass[i].floor%><br>
-                        Room: <%=carcass[i].room%><br>
-                        <% if(carcass[i].rmName){%>
-                            Floor: <%=carcass[i].rmName%><br>
-                            <%}%>
-                        Description: <%=carcass[i].description%>
 
-                    </div>
+                        <div class="col">
+                            Building: <%=carcass[i].building%><br>
+                            Floor: <%=carcass[i].floor%><br>
+                            Room: <%=carcass[i].room%><br>
+                            <% if(carcass[i].rmName){%>
+                                Room Name: <%=carcass[i].rmName%><br>
+                                <%}%>
+                            Description: <%=carcass[i].description%>
+                            <div class="row">
+                                <a class="btn btn-primary" href="/dashboard/<%=carcass[i].id%>/edit">Update</a>
+                                <a class="btn btn-success" href="/dashboard/<%=carcass[i].id%>">View Carcass Details</a>
+                            </div>
+                        </div>
+
                 <%}%>
             </div>
-            <a href="/dashboard/new">Claim a carcass</a>
+            <a class="btn btn-dark" href="/dashboard/new">Claim a carcass</a>
         </div>
     </body>
 </html>
