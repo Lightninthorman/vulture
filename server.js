@@ -42,8 +42,11 @@ app.use(methodOverride('_method'))
 //==============
 //Routes
 //==============
+const dashController = require('./controllers/dashboard.js')
+app.use('/dashboard', dashController)
+
 app.get('/', (req,res) => {
-    res.send('Hello World')
+    res.render('home.ejs')
 })
 //==============
 //Listeners

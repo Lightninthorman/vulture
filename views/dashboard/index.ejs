@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <% include ../partials/head.ejs %>
+    <body>
+        <div class="container">
+            <h1>Dashboard</h1>
+            <div class="row">
+                <% for (let i in carcass){%>
+                    <div class="col">
+                        Building: <%=carcass[i].building%><br>
+                        Floor: <%=carcass[i].floor%><br>
+                        Room: <%=carcass[i].room%><br>
+                        <% if(carcass[i].rmName){%>
+                            Floor: <%=carcass[i].rmName%><br>
+                            <%}%>
+                        Description: <%=carcass[i].description%>
+
+                    </div>
+                <%}%>
+            </div>
+            <a href="/dashboard/new">Claim a carcass</a>
+        </div>
+    </body>
+</html>

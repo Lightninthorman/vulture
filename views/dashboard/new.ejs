@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <% include ../partials/head.ejs %>
+    <body>
+        <div class="container">
+            <h1>Lead Others to a Carcass</h1>
+            <form  action="/dashboard" method="post">
+                <div class="form-group">
+                    <label for="building">Building:</label>
+                    <input type="text" name="building">
+                </div>
+                <div class="form-group">
+                    <label for="floor">Floor:</label>
+                    <input type="text" name="floor">
+                </div>
+                <div class="form-group">
+                    <label for="room">Room:</label>
+                    <input type="text" name="room">
+                </div>
+                <div class="form-group">
+                    <label for="rmName">Room Name:</label>
+                    <input type="text" name="rmName" placeholder = "ex: 'Main Conference Room'">
+                    <small class="form-text text-muted">*optional</small>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea name="description" rows="8" cols="80"></textarea>
+                </div>
+                <input class="btn btn-success" type="submit" value="Circle Up!">
+                <a class="btn btn-secondary" href="/dashboard">Cancel</a>
+            </form>
+        </div>
+
+    </body>
+</html>
