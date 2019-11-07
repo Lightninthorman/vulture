@@ -1,0 +1,14 @@
+        <div class="container">
+            <h1>Carcass</h1>
+            <div class="row">
+                <div class="col">
+                    Building: <%=carcass.building%><br>
+                    Floor: <%=carcass.floor%><br>
+                    Room: <%=carcass.room%><br>
+                    <% if(carcass.rmName){%>
+                        Room Name: <%=carcass.rmName%><br>
+                        <%}%>
+                    Description: <%=carcass.description%>
+                </div>
+            </div>
+            <a class="btn btn-dark" href="/dashboard">Return to Main</a>

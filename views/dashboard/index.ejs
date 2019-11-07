@@ -10,7 +10,7 @@
             <div class="row">
                 <% for (let i in carcass){%>
 
-                        <div class="col">
+                        <div class="col indexCol" data-id ='<%=carcass[i].id%>' >
                             Building: <%=carcass[i].building%><br>
                             Floor: <%=carcass[i].floor%><br>
                             Room: <%=carcass[i].room%><br>

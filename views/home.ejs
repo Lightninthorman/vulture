@@ -3,10 +3,50 @@
     <% include ./partials/head.ejs %>
 
     <body>
-        <div class="container">
-            <h1>Vulture</h1>
-            <a class="btn btn-primary"href="/session/new">Log In</a>
-            <a class="btn btn-outline-primary" href="/user/new">Sign Up</a>
-        </div>
+        <!-- <header>
+            <div class="overlay"></div>
+            <video playsinline autoplay muted loop id="vulturesCircling">
+                <source src="css/imgs/vulturesCircling.mov" type="video/mp4">
+            </video>
+            <div class="container">
+                <h1>Vulture</h1>
+                <a class="btn btn-primary"href="/session/new">Log In</a>
+                <a class="btn btn-outline-primary" href="/user/new">Sign Up</a>
+            </div>
+        <header> -->
+
+<header id="homeHeader">
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="css/imgs/vulturesCircling.mov" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3">Together We Feast</h1>
+        <a class="btn btn-outline-light btn-lg m-3"href="/session/new">Log In</a>
+        <a class="btn btn-outline-light btn-lg m-3" href="/user/new">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <h5>Food for Thought</h5>
+        <p>We all know that food and drinks improve the turnout for an event and are an easy way to improve morale in any meeting. This has been taken to heart by many in the corporate world where it is common to bring in food for a lunch meeting, provide pastries for a morning meeting, or have a thank-you spread for employees at the end of the day.</p>
+        <p>It's also common practice to overestimate the amount of food needed. Nothing worse than offering snacks and not having enough! T</p>
+        <h5>The Result?</h5>
+        <p>Lot's of leftovers. The typical response is for someone to move the leftover food into a common area like a kitchen when the meeting is over. From there it's usually up to someone stumbling on the prize during a break and spreading the news by word of mouth. Often food is wasted by not being found by enough people to finish it off.</p>
+        <h5>No Longer!</h5>
+        <p>Vulture is here to save that food from being forgotten and wasted. Named after nature's clean up crew, Vulture will spread the word to everyone in the organization of the location of free food. We all feast, no waste, everyone wins!</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
     </body>
 </html>

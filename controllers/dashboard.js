@@ -35,24 +35,37 @@ router.get('/new', verifyUser, (req,res) => {
 })
 
 router.post('/', (req,res) => {
+    //attach username from session cookie to the post request to allow only  OP to make edits to the post or delete it. Others can add comments.
+    req.body.createdBy = req.session.username
     Carcass.create(req.body, (err,newCarcass) => {
         if (err) {
             res.redirect('/dashboard/new')
         }else{
+            // console.log(req.body);
             res.redirect('/dashboard')
         }
     })
 })
 
+router.get('/modal/:id',verifyUser,
+(req,res) => {
+    Carcass.findById(req.params.id, (err, foundCarcass) => {
+        res.render('dashboard/modal.ejs', {
+            tabTitle: 'Vulture | Carcass',
+            carcass:foundCarcass
+        })
+    })
+})
 //=====
 //Show Carcass
 //=====
 router.get('/:id', verifyUser, (req,res) => {
     Carcass.findById(req.params.id, (err, foundCarcass) => {
-        res.render('dashboard/show.ejs', {
-            tabTitle: 'Vulture | Carcass',
-            carcass:foundCarcass
-        })
+        res.send(foundCarcass)
+        // res.render('dashboard/show.ejs', {
+        //     tabTitle: 'Vulture | Carcass',
+        //     carcass:foundCarcass
+        // })
     })
 })
 //=====
@@ -84,5 +97,7 @@ router.delete('/:id', (req, res) => {
         res.redirect('/dashboard')
     })
 })
+
+
 
 module.exports = router
