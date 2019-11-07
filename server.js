@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const app = express()
 const db = mongoose.connection
+const session = require('express-session')
 require('dotenv').config()
 
 //==============
@@ -39,14 +40,32 @@ app.use(express.urlencoded({extended:false}))
 //be able to use delete and put routes
 app.use(methodOverride('_method'))
 
+//set session cookie
+app.use(session({
+    secret:"hihermano",//random string
+    resave:false,
+    saveUninitialized:false
+}))
 //==============
 //Routes
 //==============
+//== /dashboard route
 const dashController = require('./controllers/dashboard.js')
 app.use('/dashboard', dashController)
 
+//== /user route
+const userController = require('./controllers/users.js')
+app.use('/user', userController)
+
+//== /session routes
+const sessionController = require('./controllers/session.js')
+app.use('/session', sessionController)
+
+
 app.get('/', (req,res) => {
-    res.render('home.ejs')
+    res.render('home.ejs', {
+        tabTitle: 'Vulture | Log In/Sign Up'
+    })
 })
 //==============
 //Listeners

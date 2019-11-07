@@ -28,6 +28,9 @@
             <input class="btn btn-success" type="submit" value="Update">
             <a class="btn btn-secondary" href="/dashboard">Cancel</a>
         </form>
+        <form action="/dashboard/<%=carcass.id%>?_method=DELETE" method="post">
+            <input class="btn btn-dark" type="submit" value="Delete Carcass">
+        </form>
     </div>
 
 </body>
