@@ -61,7 +61,10 @@ router.get('/modal/:id',verifyUser,
 //=====
 router.get('/:id', verifyUser, (req,res) => {
     Carcass.findById(req.params.id, (err, foundCarcass) => {
-        res.send(foundCarcass)
+        res.render('dashboard/show.ejs',{
+            tabTitle: 'Vulture | Carcass',
+            carcass:foundCarcass
+        })
         // res.render('dashboard/show.ejs', {
         //     tabTitle: 'Vulture | Carcass',
         //     carcass:foundCarcass

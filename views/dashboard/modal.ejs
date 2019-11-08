@@ -1,14 +1,16 @@
-        <div class="container">
-            <h1>Carcass</h1>
-            <div class="row">
-                <div class="col">
-                    Building: <%=carcass.building%><br>
-                    Floor: <%=carcass.floor%><br>
-                    Room: <%=carcass.room%><br>
-                    <% if(carcass.rmName){%>
-                        Room Name: <%=carcass.rmName%><br>
-                        <%}%>
-                    Description: <%=carcass.description%>
-                </div>
-            </div>
-            <a class="btn btn-dark" href="/dashboard">Return to Main</a>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="detailsModalLabel">Sign In to Vulture</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div id = 'dashboardModalBody'class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>

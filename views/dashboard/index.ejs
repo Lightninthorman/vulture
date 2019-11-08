@@ -2,26 +2,26 @@
 <html lang="en" dir="ltr">
     <% include ../partials/head.ejs %>
     <body>
+        <!-- Hidden modal for individual item display -->
+        <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+            
+        </div>
+
         <div class="container">
             <h1>Dashboard</h1>
             <form class="btn "action="/session/clear" method="post">
                 <input type="submit" value="Log Out">
             </form>
-            <div class="row">
+            <div class="row indexRow d-flex justify-content-start p-2">
                 <% for (let i in carcass){%>
 
-                        <div class="col indexCol" data-id ='<%=carcass[i].id%>' >
+                        <div class="d-flex justify-content-center align-items-center p-2 m-2 indexCol" data-id ='<%=carcass[i].id%>' >
                             Building: <%=carcass[i].building%><br>
                             Floor: <%=carcass[i].floor%><br>
                             Room: <%=carcass[i].room%><br>
                             <% if(carcass[i].rmName){%>
                                 Room Name: <%=carcass[i].rmName%><br>
                                 <%}%>
-                            Description: <%=carcass[i].description%>
-                            <div class="row">
-                                <a class="btn btn-primary" href="/dashboard/<%=carcass[i].id%>/edit">Update</a>
-                                <a class="btn btn-success" href="/dashboard/<%=carcass[i].id%>">View Carcass Details</a>
-                            </div>
                         </div>
 
                 <%}%>

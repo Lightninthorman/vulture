@@ -2,6 +2,12 @@ body{
     background: lightblue;
 }
 
+/*
+   ======
+== Home Page Styling
+   ======
+*/
+
 #homeHeader {
   position: relative;
   background-color: black;
@@ -37,4 +43,25 @@ body{
   background-color: black;
   opacity: 0.5;
   z-index: 1;
+}
+
+/*
+   ======
+== Dashboard Styling
+   ======
+*/
+.container{
+    border:1px solid gold;
+}
+.indexRow{
+    border: 1px solid green;
+    max-width: 50%;
+}
+
+.indexCol{
+    border: 1px solid black;
+    width:200px;
+    height:220px;
+    border-radius: 100px 100px 0 0;
+
 }

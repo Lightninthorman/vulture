@@ -14,10 +14,10 @@ router.post('/', (req,res) => {
 
     User.create(req.body, (err,newUser) => {
         if (err) {
-            res.redirect('/user/new')
+            res.send('Username already exists')
         }else{
             req.session.username = newUser.username
-            res.redirect('/dashboard')
+            res.send('/dashboard')
         }
     })
 })

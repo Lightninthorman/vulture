@@ -7,11 +7,7 @@ const vultureSchema = new mongoose.Schema({
     rmName:String,
     description:{type:String, required:true},
     createdBy:{type:String, default:'Anonymous'},
-    expireAt: {
-      type: Date,
-      default: Date.now,
-      index: { expires: '3h' },
-    }
+    
 })
 
 module.exports = mongoose.model('Carcass', vultureSchema)
