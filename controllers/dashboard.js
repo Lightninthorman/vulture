@@ -11,6 +11,33 @@ const verifyUser = (req,res,next) => {
     }
 }
 
+router.get('/seed', (req,res) => {
+    Carcass.create(
+        [
+            {
+                building:'225 Binney',
+                floor:'4',
+                room:'404',
+                rmName:'Kitchen',
+                description:'Sandwiches, no vegan options left.',
+                createdBy:'Adam C.',
+                comments:['Sorry I took the last one!','The cookies were great!'],
+                commentBy:['Katie H.','Peter P.']
+            },
+            {
+                building:'225 Binney',
+                floor:'7',
+                room:'716',
+                rmName:'Big Conference Room',
+                description:'Lots of breakfast stuff. Good coffee!',
+                createdBy:'Emily U.',
+                comments:['No joke, the coffee is way better than what we have in the kitchen.','Danish, where have you been all my life?','Awww man, it\'s all picked over. I don\'t want the grapes that are left...'],
+                commentBy:['Katie H.','Peter P.', 'Jeanne L.']
+            }
+        ]
+    )
+})
+
 //=====
 //Dashboard
 //=====
@@ -47,28 +74,26 @@ router.post('/', (req,res) => {
     })
 })
 
-router.get('/modal/:id',verifyUser,
-(req,res) => {
-    Carcass.findById(req.params.id, (err, foundCarcass) => {
-        res.render('dashboard/modal.ejs', {
-            tabTitle: 'Vulture | Carcass',
-            carcass:foundCarcass
-        })
-    })
-})
+
+// router.get('/modal/:id',verifyUser,
+// (req,res) => {
+//     Carcass.findById(req.params.id, (err, foundCarcass) => {
+//         res.render('dashboard/modal.ejs', {
+//             tabTitle: 'Vulture | Carcass',
+//             carcass:foundCarcass
+//         })
+//     })
+// })
 //=====
 //Show Carcass
 //=====
 router.get('/:id', verifyUser, (req,res) => {
     Carcass.findById(req.params.id, (err, foundCarcass) => {
-        res.render('dashboard/show.ejs',{
-            tabTitle: 'Vulture | Carcass',
-            carcass:foundCarcass
+        // console.log(foundCarcass);
+        res.render('dashboard/modal.ejs',{
+            carcass:foundCarcass,
+            user:req.session.username
         })
-        // res.render('dashboard/show.ejs', {
-        //     tabTitle: 'Vulture | Carcass',
-        //     carcass:foundCarcass
-        // })
     })
 })
 //=====
@@ -84,11 +109,11 @@ router.get('/:id/edit', verifyUser, (req,res) => {
 })
 
 router.put('/:id', (req,res) => {
-    Carcass.findByIdAndUpdate(req.params.id, req.body, (err,updateCarcass) => {
+    Carcass.findByIdAndUpdate(req.params.id,{$push:{comments:req.body.comments,commentBy:req.session.username}} , (err,updateCarcass) => {
         if (err) {
-            res.redirect('/dashboard/'+req.params.id)
+            res.send(err)
         }
-        res.redirect('/dashboard')
+        res.redirect('back')
     })
 })
 

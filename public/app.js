@@ -20,7 +20,8 @@ $(() => {
             window.location.href = data;
         },
         (error) => {
-
+            $('.textInput').val("")
+            return
         })
     }
 
@@ -52,25 +53,56 @@ $(() => {
 //===========================
 //=== Dashboard Scripts
 //===========================
-$('.indexCol').on('click', (event) => {
-    const target = $(event.target).attr('data-id');
-    console.log(target);
+//======
+//= AJAX for adding Comments
+//======
+const postComment = (form, formData) => {
     $.ajax({
-        url:('/dashboard/'+ target)
-    }).then(
-        (carcass) => {
-            populate(carcass)
-        },
-        (error) => {
-            console.log(error);
+        type:'PUT',
+        url:$(form).attr('action'),
+        data:formData
+    }).then((data) => {
+        if (data === 'error') {
+            $('.textInput').val("")
+            return
         }
-    )
-})
-
-const populate = (carcass) => {
-    console.log(carcass);
-    // $('#detailsModal').append(carcass)
-    // $('#detailsModal').modal('toggle')
+        console.log(data);
+        window.location.href = data;
+    },
+    (error) => {
+        $('.textInput').val("")
+        return
+    })
 }
+
+    $('.indexCol').on('click', (event) => {
+        const target = $(event.target).attr('data-id');
+        console.log(target);
+        $.ajax({
+            url:('/dashboard/'+ target)
+        }).then(
+            (carcass) => {
+                populate(carcass)
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    })
+
+
+
+    const populate = (carcass) => {
+        console.log(carcass);
+        $('#detailsModal').empty()
+        $('#detailsModal').append(carcass)
+        $('#detailsModal').modal('toggle')
+        // $('#commentForm').on('submit', (event) => {
+        //     event.preventDefault()
+        //     const form = $('#signUpForm')
+        //     const formData = $(form).serialize()
+        //     postComment(form, formData)
+        // })
+    }
 
 })

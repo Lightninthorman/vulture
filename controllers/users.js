@@ -14,7 +14,7 @@ router.post('/', (req,res) => {
 
     User.create(req.body, (err,newUser) => {
         if (err) {
-            res.send('Username already exists')
+            res.send('error')
         }else{
             req.session.username = newUser.username
             res.send('/dashboard')

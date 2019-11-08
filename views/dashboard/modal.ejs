@@ -7,7 +7,35 @@
       </button>
     </div>
     <div id = 'dashboardModalBody'class="modal-body">
-
+        Building: <%=carcass.building%><br>
+        Floor: <%=carcass.floor%><br>
+        Room: <%=carcass.room%><br>
+        <% if(carcass.rmName){%>
+            Room Name: <%=carcass.rmName%><br>
+            <%}%>
+        Description: <%=carcass.description%>
+        <section class="commentSection">
+            <h6>Comments:</h6>
+            <% if(carcass.comments[0] === undefined){%>
+                <p>Be the first to comment!</p>
+                <%}else{%>
+                    <% for(let i in carcass.comments){%>
+                        <div class="comment">
+                        <small>posted by: <%=carcass.commentBy[i]%></small>
+                        <p><%=carcass.comments[i]%></p>
+                        </div>
+                    <%}%>
+                <%}%>
+        </section>
+        <section class = "addComment">
+            <form id='commentForm' action="/dashboard/<%=carcass.id%>?_method=PUT" method="post">
+                <div class="form-group">
+                    <label for="comments">Comment:</label>
+                    <textarea name="comments" rows="4" cols="40"></textarea>
+                </div>
+                <input class="btn btn-success" type="submit" value="Post Comment">
+            </form>
+        </section>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
