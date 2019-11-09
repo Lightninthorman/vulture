@@ -4,7 +4,7 @@
     <body>
         <!-- Hidden modal for individual item display -->
         <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
-            
+
         </div>
 
         <div class="container">
@@ -15,7 +15,7 @@
             <div class="row indexRow d-flex justify-content-start p-2">
                 <% for (let i in carcass){%>
 
-                        <div class="d-flex justify-content-center align-items-center p-2 m-2 indexCol" data-id ='<%=carcass[i].id%>' >
+                        <div class="d-flex justify-content-center align-items-center p-4 m-2 indexCol" data-id ='<%=carcass[i].id%>' >
                             Building: <%=carcass[i].building%><br>
                             Floor: <%=carcass[i].floor%><br>
                             Room: <%=carcass[i].room%><br>
