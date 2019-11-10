@@ -25,6 +25,10 @@ h5{
   overflow: hidden;
 }
 
+#homeLogo{
+    height: 30vmin;
+}
+
 #homeHeader video {
   position: absolute;
   top: 50%;
@@ -109,3 +113,12 @@ h5{
     background-repeat: no-repeat;
 
 }
+
+@media screen and (max-height: 580px) {
+    .slogan{
+        font-size:54px;
+    }
+
+    #homeLogo{
+        height:40%;
+    }
