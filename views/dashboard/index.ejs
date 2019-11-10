@@ -6,26 +6,44 @@
         <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
 
         </div>
-
-        <div class="container">
+        <!-- Visible Content -->
+        <header class = 'd-flex flex-row justify-content-between align-items-center px-4'>
+            <img class = 'my-3 logo' src="css/imgs/vultureLogo.png" alt="Vulture Logo">
             <h1>Dashboard</h1>
             <form class="btn "action="/session/clear" method="post">
                 <input type="submit" value="Log Out">
             </form>
-            <div class="row indexRow d-flex justify-content-start p-2">
+        </header>
+        <div class="container-fluid">
+
+            <div class="row d-flex justify-content-start flex-nowrap p-2">
+                <div class="col-7 d-flex justify-content-start flex-wrap ">
                 <% for (let i in carcass){%>
 
-                        <div class="d-flex justify-content-center align-items-center p-4 m-2 indexCol" data-id ='<%=carcass[i].id%>' >
-                            Building: <%=carcass[i].building%><br>
+                        <div class="d-flex justify-content-center align-items-center p-4 m-2 indexCol clickModal" data-id ='<%=carcass[i].id%>' data-floor='<%=carcass[i].floor%>'>
+                            Bldg: <%=carcass[i].building%><br>
                             Floor: <%=carcass[i].floor%><br>
-                            Room: <%=carcass[i].room%><br>
+                            Rm: <%=carcass[i].room%><br>
                             <% if(carcass[i].rmName){%>
-                                Room Name: <%=carcass[i].rmName%><br>
+                                Rm Name: <%=carcass[i].rmName%><br>
                                 <%}%>
                         </div>
-
                 <%}%>
+                </div>
+                <div class="col buildingContainer d-flex justify-content-center align-self-start">
+                    <div class="building ">
+                        <%for(let i = 7; i > 0; i--){%>
+                            <div class="floor my-2 p-2 d-flex justify-content-start" id = "floor<%=i%>">
+
+                                <div class="floorName">
+                                    <h3>Floor <%=i%></h3>
+                                </div>
+                            </div>
+                        <%}%>
+                    </div>
+                </div>
             </div>
+
             <a class="btn btn-dark" href="/dashboard/new">Claim a carcass</a>
         </div>
     </body>

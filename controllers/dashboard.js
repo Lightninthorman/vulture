@@ -109,6 +109,17 @@ router.get('/:id/edit', verifyUser, (req,res) => {
 })
 
 router.put('/:id', (req,res) => {
+    Carcass.findByIdAndUpdate(req.params.id, req.body, (err,updateCarcass) => {
+        if(err){
+            res.send(err)
+        }else{
+            res.redirect('/dashboard')
+        }
+
+    })
+})
+
+router.put('/:id/comment', (req,res) => {
     Carcass.findByIdAndUpdate(req.params.id,{$push:{comments:req.body.comments,commentBy:req.session.username}} , (err,updateCarcass) => {
         if (err) {
             res.send(err)

@@ -54,6 +54,19 @@ $(() => {
 //=== Dashboard Scripts
 //===========================
 //======
+//= Load visual markers on building mock-up based on data-floor attribute for each carcass listed
+//======
+    const foodAlert = () => {
+        $('.indexCol').each( (i,obj)=>{
+            const floorNumber = $(obj).attr('data-floor')
+            const id = $(obj).attr('data-id')
+            const $foodAlert = $('<div>').addClass('foodAlert clickModal').attr('data-id',id)
+            console.log('#floor'+floorNumber);
+            $('#floor'+floorNumber).append($foodAlert)
+        })
+    }
+    foodAlert()
+//======
 //= AJAX for adding Comments
 //======
 const postComment = (form, formData) => {
@@ -66,7 +79,7 @@ const postComment = (form, formData) => {
             $('.textInput').val("")
             return
         }
-        console.log(data);
+        // console.log(data);
         window.location.href = data;
     },
     (error) => {
@@ -75,9 +88,12 @@ const postComment = (form, formData) => {
     })
 }
 
-    $('.indexCol').on('click', (event) => {
+//======
+//= Click event to open modal to show carcss details
+//======
+    $('.clickModal').on('click', (event) => {
         const target = $(event.target).attr('data-id');
-        console.log(target);
+        // console.log(target);
         $.ajax({
             url:('/dashboard/'+ target)
         }).then(
@@ -93,7 +109,7 @@ const postComment = (form, formData) => {
 
 
     const populate = (carcass) => {
-        console.log(carcass);
+        // console.log(carcass);
         $('#detailsModal').empty()
         $('#detailsModal').append(carcass)
         $('#detailsModal').modal('toggle')

@@ -1,12 +1,16 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="detailsModalLabel">Sign In to Vulture</h5>
+      <h5 class="modal-title" id="detailsModalLabel">Feast on this!</h5>
+      <% if(carcass.createdBy === user){%>
+          <a href="/dashboard/<%=carcass.id%>/edit">Edit</a>
+      <%}%>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div id = 'dashboardModalBody'class="modal-body">
+
         Building: <%=carcass.building%><br>
         Floor: <%=carcass.floor%><br>
         Room: <%=carcass.room%><br>
@@ -28,7 +32,7 @@
                 <%}%>
         </section>
         <section class = "addComment">
-            <form id='commentForm' action="/dashboard/<%=carcass.id%>?_method=PUT" method="post">
+            <form id='commentForm' action="/dashboard/<%=carcass.id%>/comment?_method=PUT" method="post">
                 <div class="form-group">
                     <label for="comments">Comment:</label>
                     <textarea name="comments" rows="4" cols="40"></textarea>

@@ -1,7 +1,15 @@
 body{
     background: lightblue;
+    font-family: 'Taviraj', serif;
 }
 
+h1{
+    font-family: 'Pangolin', cursive;
+}
+
+h5{
+    font-family: 'Work Sans', sans-serif;
+}
 /*
    ======
 == Home Page Styling
@@ -50,18 +58,54 @@ body{
 == Dashboard Styling
    ======
 */
-.container{
+.logo{
+    width:120px;
+}
+.row{
     border:1px solid gold;
 }
-.indexRow{
+.col{
     border: 1px solid green;
-    max-width: 50%;
 }
-
+.floor{
+    border:1px solid blue;
+    position: relative;
+    min-height: 50px;
+}
+.floorName{
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+   right: 0;
+   z-index: -1;
+   overflow: hidden;
+   text-align: center;
+}
+.building{
+    border:2px solid red;
+    width:90%;
+}
+.foodAlert{
+    margin-right: 5px;
+    width:35px;
+    height:35px;
+    border-radius: 50%;
+    background-color: red;
+    background-image: url("/css/imgs/skull.png");
+    background-size: contain;
+    background-position: 3px 0;
+    background-repeat: no-repeat;
+}
 .indexCol{
     border: 1px solid black;
     width:200px;
     height:220px;
     border-radius: 100px 100px 0 0;
+    background-color: grey;
+    background-image: url('imgs/kissclipart-grass-png-clipart-download-clip-art-6f30829daac881b0.png');
+    background-size: 255px 70px;
+    background-position: -25px 153px;
+    background-repeat: no-repeat;
 
 }
