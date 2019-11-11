@@ -60,12 +60,45 @@ $(() => {
         $('.indexCol').each( (i,obj)=>{
             const floorNumber = $(obj).attr('data-floor')
             const id = $(obj).attr('data-id')
-            const $foodAlert = $('<div>').addClass('foodAlert clickModal').attr('data-id',id)
-            console.log('#floor'+floorNumber);
-            $('#floor'+floorNumber).append($foodAlert)
+            const room = $(obj).attr('data-room')
+            const name = $(obj).attr('data-name')
+
+
+            const $foodAlert =
+                $('<div>')
+                .addClass('foodAlert clickModal')
+                .attr('data-id',id)
+                .attr('data-room',room)
+                .attr('data-name',name)
+                .attr('data-floor',floorNumber)
+            $('#floor'+floorNumber).prepend($foodAlert)
         })
     }
+    const alertInfoPopUp = () => {
+        $('.foodAlert').hover((event) => {
+            const pos = $(event.target).position()
+            const room = $(event.currentTarget).data('room')
+            const floor = $(event.currentTarget).data('floor')
+            let name = $(event.currentTarget).data('name')
+            if (name) {
+                name = `<p class = 'm-0'>${name}</p>`
+            }else{
+                name = ""
+            }
+
+            $('#floor'+floor).append($('<div>')
+            .css('top',(pos.top + 37)+'px' )
+            .css('left',pos.left+'px' )
+            .html(`<p class = 'm-0'>Rm: ${room}</p>${name}`)
+            .addClass('alertInfo'))
+        },(event) => {
+            $('.alertInfo').hide()
+            // console.log('Bye!');
+        })
+    }
+
     foodAlert()
+    alertInfoPopUp()
 //======
 //= AJAX for adding Comments
 //======

@@ -1,14 +1,23 @@
 body{
-    background: lightblue;
-    font-family: 'Taviraj', serif;
+    background: #acc18a;
+    font-family: 'Oswald', sans-serif;
 }
 
-h1{
-    font-family: 'Pangolin', cursive;
+h1, h3{
+    font-family: 'Amatic SC', cursive;
 }
 
-h5{
-    font-family: 'Work Sans', sans-serif;
+textarea{
+    border-radius: 7px;
+}
+
+.btn-primary, .btn-secondary, .btn-success, .btn-dark{
+    box-shadow: 2px 2px 3px #1C1C1C;
+}
+
+.itemContainer:active, .btn-secondary:active, .btn-success:active, .btn-dark:active{
+    box-shadow: 0 1px 3px #1C1C1C;
+    transform: translateY(4px);
 }
 /*
    ======
@@ -62,56 +71,181 @@ h5{
 == Dashboard Styling
    ======
 */
+.dashHeader{
+    background-color: rgba(153,141,129,.7);
+    font-family: 'Work Sans', sans-serif;
+}
+
+.dashHeader h1{
+    font-family: 'Amatic SC', serif;
+}
+
 .logo{
     width:120px;
 }
-.row{
-    border:1px solid gold;
+
+.buildingContainer{
+    background-image: url('/css/imgs/trees.png');
+    background-color: lightblue;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    border:2px solid black;
+    border-radius: 5px;
 }
-.col{
-    border: 1px solid green;
+
+.building{
+    /* border:2px solid red; */
+    width:90%;
+    margin-top: 30px;
+    background: firebrick;
 }
+
 .floor{
-    border:1px solid blue;
+    /* border:1px solid blue; */
     position: relative;
     min-height: 50px;
+    background: indianred;
+    background-image: url('/css/imgs/officeWindow.png');
+    background-size: contain;
+
 }
 .floorName{
     position: absolute;
-    top:0;
-    left: 0;
-    bottom: 0;
+    display:inline-block;
+    top:8px;
+    left: 28%;
    right: 0;
-   z-index: -1;
+   text-align:center;
+   width:50%;
    overflow: hidden;
    text-align: center;
+   background-color: rgba(255,255,255,.7);
+   border-radius: 7px;
+   z-index: 1;
 }
-.building{
-    border:2px solid red;
-    width:90%;
+
+.floorName h3{
+    margin:auto;
+    font-family: 'Taviraj', serif;
 }
+
 .foodAlert{
     margin-right: 5px;
     width:35px;
     height:35px;
     border-radius: 50%;
-    background-color: red;
+    background-color: LemonChiffon;
     background-image: url("/css/imgs/skull.png");
     background-size: contain;
     background-position: 3px 0;
     background-repeat: no-repeat;
+    box-shadow: 2px 2px 3px black;
+    z-index: 2;
 }
+.foodAlert:active{
+    box-shadow: 0 1px 3px grey;
+    transform: translateY(4px);
+}
+
+.alertInfo{
+    position:absolute;
+    background-color: moccasin;
+    border-radius: 7px;
+    padding:3px;
+    z-index: 3;
+}
+
 .indexCol{
     border: 1px solid black;
     width:200px;
     height:220px;
     border-radius: 100px 100px 0 0;
-    background-color: grey;
+    background-color: lightgrey;
     background-image: url('imgs/kissclipart-grass-png-clipart-download-clip-art-6f30829daac881b0.png');
     background-size: 255px 70px;
     background-position: -25px 153px;
     background-repeat: no-repeat;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.7), 0px -1px 0px rgba(0,0,0,.5);
+    cursor:pointer;
 
+}
+
+.itemContainer{
+    background-image: linear-gradient(#FFB3B3,#E8654F);
+    margin:0 7px 10px 0;
+    padding: 14px 7px 0 7px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px grey;
+}
+
+/*
+   ======
+== Modal Styling
+   ======
+*/
+.modal-content{
+    background-color: #acc18a;
+}
+
+.modalP{
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    font-family: 'Amatic SC', cursive;
+}
+
+.modalDescription{
+    border:1px solid grey;
+    min-height: 50px;
+    border-radius: 7px;
+}
+
+.commentSection{
+    background-color: #dafeb7;
+    margin:auto;
+    width:97%;
+    border-radius: 7px;
+}
+
+.commentSection p{
+    margin:0;
+}
+
+.comment{
+    border-radius: 20px;
+    background-color: #f2fbe0
+}
+/*
+   ======
+== Create and Edit Page Styling
+   ======
+*/
+.newContainer{
+    background-image: url('imgs/savannaGreen.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    color:white;
+}
+
+.updateContainer{
+    background-image: url('imgs/desert.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    color:white;
+}
+
+/*
+   ======
+== Media Queries
+   ======
+*/
+@media screen and (max-width: 600px){
+.floorName h3{
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-height: 580px) {

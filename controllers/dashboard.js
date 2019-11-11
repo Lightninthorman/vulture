@@ -45,7 +45,8 @@ router.get('/', verifyUser, (req,res) => {
     Carcass.find({}, (err,allCarcasses) => {
         res.render('dashboard/index.ejs',{
             tabTitle : 'Vulture | Dashboard',
-            carcass: allCarcasses
+            carcass: allCarcasses,
+            heading:'Dashboard'
         })
     })
 })
@@ -57,6 +58,7 @@ router.get('/new', verifyUser, (req,res) => {
 
     res.render('dashboard/new.ejs', {
         tabTitle: "Vulture | Circling Carcass",
+        heading:'Circling Carcass'
 
     })
 })
@@ -103,7 +105,8 @@ router.get('/:id/edit', verifyUser, (req,res) => {
     Carcass.findById(req.params.id, (err,foundCarcass) => {
         res.render('dashboard/edit.ejs', {
             tabTitle:'Vulture | Update Carcass',
-            carcass:foundCarcass
+            carcass:foundCarcass,
+            heading:"Update Carcass"
         })
     })
 })

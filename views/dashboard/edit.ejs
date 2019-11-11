@@ -2,34 +2,42 @@
 <html lang="en" dir="ltr">
 <% include ../partials/head.ejs %>
 <body>
-    <div class="container">
-        <h1>Update Your Carcass</h1>
+    <% include ../partials/header.ejs %>
+    <div class="container updateContainer my-4">
+        <h1 class = 'display-4'>Update Your Carcass</h1>
         <form  action="/dashboard/<%=carcass.id%>?_method=PUT" method="post">
-            <div class="form-group">
-                <label for="building">Building:</label>
-                <input type="text" name="building" value="<%=carcass.building%>">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <div class="form-group">
+                        <legend>Building:</legend>
+                        <input type="text" name="building" value="<%=carcass.building%>">
+                    </div>
+                    <div class="form-group">
+                        <legend>Floor:</legend>
+                        <input type="text" name="floor" value="<%=carcass.floor%>">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <legend>Room:</legend>
+                        <input type="text" name="room" value="<%=carcass.room%>">
+                    </div>
+                    <div class="form-group">
+                        <legend>Room Name:</legend>
+                        <input type="text" name="rmName" value="<%=carcass.rmName%>">
+                    </div>
+                </div>
             </div>
+
             <div class="form-group">
-                <label for="floor">Floor:</label>
-                <input type="text" name="floor" value="<%=carcass.floor%>">
+                <legend>Description:</legend>
+                <textarea name="description" rows="5" cols="40"><%=carcass.description%></textarea>
             </div>
-            <div class="form-group">
-                <label for="room">Room:</label>
-                <input type="text" name="room" value="<%=carcass.room%>">
-            </div>
-            <div class="form-group">
-                <label for="rmName">Room Name:</label>
-                <input type="text" name="rmName" value="<%=carcass.rmName%>">
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea name="description" rows="8" cols="80"><%=carcass.description%></textarea>
-            </div>
-            <input class="btn btn-success" type="submit" value="Update">
-            <a href="/dashboard" class="btn btn-secondary" >Cancel</a>
+            <input class="btn btn-lg btn-success" type="submit" value="Update">
+            <a href="/dashboard" class="btn btn-lg btn-secondary mx-3" >Cancel</a>
         </form>
         <form action="/dashboard/<%=carcass.id%>?_method=DELETE" method="post">
-            <input class="btn btn-dark" type="submit" value="Delete Carcass">
+            <input class="btn btn-lg btn-dark my-3" type="submit" value="Delete Carcass">
         </form>
     </div>
 

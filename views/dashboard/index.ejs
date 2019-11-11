@@ -2,25 +2,22 @@
 <html lang="en" dir="ltr">
     <% include ../partials/head.ejs %>
     <body>
-        <!-- Hidden modal for individual item display -->
+        <!-- Hidden items -->
+            <!-- modal -->
         <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
-
+        </div>
+            <!-- alert hover description -->
+        <div class="alertInfo">
         </div>
         <!-- Visible Content -->
-        <header class = 'd-flex flex-row justify-content-between align-items-center px-4'>
-            <img class = 'my-3 logo' src="css/imgs/vultureLogo.png" alt="Vulture Logo">
-            <h1>Dashboard</h1>
-            <form class="btn "action="/session/clear" method="post">
-                <input type="submit" value="Log Out">
-            </form>
-        </header>
+        <% include ../partials/header.ejs %>
         <div class="container-fluid">
-
+            <a class="btn btn-dark btn-lg m-2" href="/dashboard/new">Claim A Carcass</a>
             <div class="row d-flex justify-content-start flex-nowrap p-2">
                 <div class="col-7 d-flex justify-content-start flex-wrap ">
                 <% for (let i in carcass){%>
-
-                        <div class="d-flex justify-content-center align-items-center p-4 m-2 indexCol clickModal" data-id ='<%=carcass[i].id%>' data-floor='<%=carcass[i].floor%>'>
+                    <div class="itemContainer">
+                        <div class="d-flex justify-content-center align-items-center p-4 indexCol clickModal" data-id ='<%=carcass[i].id%>' data-floor='<%=carcass[i].floor%>' data-room='<%=carcass[i].room%>' <% if(carcass[i].rmName){%>data-name='<%=carcass[i].rmName%>'<%}%>>
                             Bldg: <%=carcass[i].building%><br>
                             Floor: <%=carcass[i].floor%><br>
                             Rm: <%=carcass[i].room%><br>
@@ -28,6 +25,8 @@
                                 Rm Name: <%=carcass[i].rmName%><br>
                                 <%}%>
                         </div>
+                    </div>
+
                 <%}%>
                 </div>
                 <div class="col buildingContainer d-flex justify-content-center align-self-start">
@@ -43,8 +42,6 @@
                     </div>
                 </div>
             </div>
-
-            <a class="btn btn-dark" href="/dashboard/new">Claim a carcass</a>
         </div>
     </body>
 </html>
