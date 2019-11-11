@@ -53,9 +53,9 @@ $(() => {
 //===========================
 //=== Dashboard Scripts
 //===========================
-//======
-//= Load visual markers on building mock-up based on data-floor attribute for each carcass listed
-//======
+    //======
+    //= Load visual markers on building mock-up based on data-floor attribute for each carcass listed
+    //======
     const foodAlert = () => {
         $('.indexCol').each( (i,obj)=>{
             const floorNumber = $(obj).attr('data-floor')
@@ -74,6 +74,9 @@ $(() => {
             $('#floor'+floorNumber).prepend($foodAlert)
         })
     }
+    //======
+    //= Alert Popups with room information
+    //=====
     const alertInfoPopUp = () => {
         $('.foodAlert').hover((event) => {
             const pos = $(event.target).position()
@@ -89,6 +92,7 @@ $(() => {
             $('#floor'+floor).append($('<div>')
             .css('top',(pos.top + 37)+'px' )
             .css('left',pos.left+'px' )
+            .css('padding','3px')
             .html(`<p class = 'm-0'>Rm: ${room}</p>${name}`)
             .addClass('alertInfo'))
         },(event) => {
@@ -122,11 +126,22 @@ const postComment = (form, formData) => {
 }
 
 //======
-//= Click event to open modal to show carcss details
+//= Click event to open modal to show carcss details. I know how to do this in a more simple way, but I didn't make this update until later and didn't want to have to go through all of my html and js to make updates.
 //======
-    $('.clickModal').on('click', (event) => {
-        const target = $(event.target).attr('data-id');
+    $('.clickModal').on('click',(event) => {
+        let target = ""
+        // console.log(event.target, event.currentTarget);
+        if (event.target === event.currentTarget) {
+            target = $(event.target).children().eq(0).attr('data-id');
+        }else{
+            target = $(event.target).attr('data-id');
+        }
+
         // console.log(target);
+        details(target)
+        })
+
+    const details = (target) => {
         $.ajax({
             url:('/dashboard/'+ target)
         }).then(
@@ -134,11 +149,10 @@ const postComment = (form, formData) => {
                 populate(carcass)
             },
             (error) => {
-                console.log(error);
+                // console.log(error);
             }
         )
-    })
-
+    }
 
 
     const populate = (carcass) => {

@@ -11,7 +11,7 @@ const verifyUser = (req,res,next) => {
     }
 }
 
-router.get('/seed', (req,res) => {
+router.get('/seed', verifyUser,(req,res) => {
     Carcass.create(
         [
             {
@@ -34,7 +34,10 @@ router.get('/seed', (req,res) => {
                 comments:['No joke, the coffee is way better than what we have in the kitchen.','Danish, where have you been all my life?','Awww man, it\'s all picked over. I don\'t want the grapes that are left...'],
                 commentBy:['Katie H.','Peter P.', 'Jeanne L.']
             }
-        ]
+        ],
+        (err,seedData) => {
+            res.redirect('/dashboard')
+        }
     )
 })
 
@@ -68,6 +71,7 @@ router.post('/', (req,res) => {
     req.body.createdBy = req.session.username
     Carcass.create(req.body, (err,newCarcass) => {
         if (err) {
+            console.log(err);
             res.redirect('/dashboard/new')
         }else{
             // console.log(req.body);

@@ -15,9 +15,12 @@
             <a class="btn btn-dark btn-lg m-2" href="/dashboard/new">Claim A Carcass</a>
             <div class="row d-flex justify-content-start flex-nowrap p-2">
                 <div class="col-7 d-flex justify-content-start flex-wrap ">
+                <% if(carcass[0] === undefined){%>
+                    <h2>No carrion to feed on yet. Keep circling...</h2>
+                    <%}%>
                 <% for (let i in carcass){%>
-                    <div class="itemContainer">
-                        <div class="d-flex justify-content-center align-items-center p-4 indexCol clickModal" data-id ='<%=carcass[i].id%>' data-floor='<%=carcass[i].floor%>' data-room='<%=carcass[i].room%>' <% if(carcass[i].rmName){%>data-name='<%=carcass[i].rmName%>'<%}%>>
+                    <div class="d-flex flex-column justify-content-start itemContainer align-self-start clickModal">
+                        <div class="d-flex justify-content-center align-items-center p-4 indexCol " data-id ='<%=carcass[i].id%>' data-floor='<%=carcass[i].floor%>' data-room='<%=carcass[i].room%>' <% if(carcass[i].rmName){%>data-name='<%=carcass[i].rmName%>'<%}%>>
                             Bldg: <%=carcass[i].building%><br>
                             Floor: <%=carcass[i].floor%><br>
                             Rm: <%=carcass[i].room%><br>

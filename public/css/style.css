@@ -3,8 +3,13 @@ body{
     font-family: 'Oswald', sans-serif;
 }
 
-h1, h3{
+h1, h3, h2{
     font-family: 'Amatic SC', cursive;
+}
+
+h2{
+    letter-spacing: 0.05em;
+    font-weight: bold;
 }
 
 textarea{
@@ -152,7 +157,6 @@ textarea{
     position:absolute;
     background-color: moccasin;
     border-radius: 7px;
-    padding:3px;
     z-index: 3;
 }
 

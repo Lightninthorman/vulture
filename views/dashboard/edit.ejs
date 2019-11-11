@@ -10,11 +10,22 @@
                 <div class="col">
                     <div class="form-group">
                         <legend>Building:</legend>
-                        <input type="text" name="building" value="<%=carcass.building%>">
+                        <select name="building">
+                            <option value="225 Binney">225 Binney</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <legend>Floor:</legend>
-                        <input type="text" name="floor" value="<%=carcass.floor%>">
+                        <select name="floor">
+                            <%for(let i = 1; i <=7; i++){
+                                if(i == carcass.floor){%>
+                                    <option value="<%=i%>" selected>Floor <%=i%></option>
+                                    <%}else{%>
+                                    <option value="<%=i%>">Floor <%=i%></option>
+                                <%}%>
+                            <%}%>
+                        </select>
+                        <option value="<%=carcass.floor%>">
                     </div>
                 </div>
                 <div class="col">
