@@ -8,7 +8,8 @@ const vultureSchema = new mongoose.Schema({
     description:{type:String, required:true},
     createdBy:{type:String, default:'Anonymous'},
     comments:[{type:String, default: undefined}],
-    commentBy:[{type:String, default: undefined}]
+    commentBy:[{type:String, default: undefined}],
+    createdAt: { type: Date, expires: 10800 }
 })
 
 module.exports = mongoose.model('Carcass', vultureSchema)
