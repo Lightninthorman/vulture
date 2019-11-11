@@ -66,7 +66,7 @@ $(() => {
 
             const $foodAlert =
                 $('<div>')
-                .addClass('foodAlert clickModal')
+                .addClass('foodAlert')
                 .attr('data-id',id)
                 .attr('data-room',room)
                 .attr('data-name',name)
@@ -140,6 +140,18 @@ const postComment = (form, formData) => {
         // console.log(target);
         details(target)
         })
+    //====
+    //=Click event for alertInfoPopUp
+    //====
+    $('.foodAlert').on('click',(event) => {
+        const target = $(event.target).attr('data-id');
+        details(target)
+        })
+
+
+    //=======
+    //==Ajax to get info to populate modal
+    //=======
 
     const details = (target) => {
         $.ajax({
@@ -153,19 +165,14 @@ const postComment = (form, formData) => {
             }
         )
     }
-
-
+    //=======
+    //==show and populate modal
+    //=======
     const populate = (carcass) => {
         // console.log(carcass);
         $('#detailsModal').empty()
         $('#detailsModal').append(carcass)
         $('#detailsModal').modal('toggle')
-        // $('#commentForm').on('submit', (event) => {
-        //     event.preventDefault()
-        //     const form = $('#signUpForm')
-        //     const formData = $(form).serialize()
-        //     postComment(form, formData)
-        // })
     }
 
 })
