@@ -95,11 +95,17 @@ router.post('/', (req,res) => {
 //=====
 router.get('/:id', verifyUser, (req,res) => {
     Carcass.findById(req.params.id, (err, foundCarcass) => {
+        console.log('err:' , err);
+        console.log('found:',foundCarcass);
         // console.log(foundCarcass);
-        res.render('dashboard/modal.ejs',{
-            carcass:foundCarcass,
-            user:req.session.username
-        })
+        if (foundCarcass == null) {
+            res.send('error')
+        }else{
+            res.render('dashboard/modal.ejs',{
+                carcass:foundCarcass,
+                user:req.session.username
+            })
+        }    
     })
 })
 //=====
