@@ -158,7 +158,7 @@ const postComment = (form, formData) => {
             url:('/dashboard/'+ target)
         }).then(
             (carcass) => {
-                console.log('Details' + carcass);
+                // console.log('Details' + carcass);
                 if(carcass === 'error'){
                     window.location.reload(true)
                 }else{

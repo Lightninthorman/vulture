@@ -71,7 +71,7 @@ router.post('/', (req,res) => {
     req.body.createdBy = req.session.username
     Carcass.create(req.body, (err,newCarcass) => {
         if (err) {
-            console.log(err);
+            // console.log(err);
             res.redirect('/dashboard/new')
         }else{
             // console.log(req.body);
@@ -95,8 +95,8 @@ router.post('/', (req,res) => {
 //=====
 router.get('/:id', verifyUser, (req,res) => {
     Carcass.findById(req.params.id, (err, foundCarcass) => {
-        console.log('err:' , err);
-        console.log('found:',foundCarcass);
+        // console.log('err:' , err);
+        // console.log('found:',foundCarcass);
         // console.log(foundCarcass);
         if (foundCarcass == null) {
             res.send('error')
@@ -105,7 +105,7 @@ router.get('/:id', verifyUser, (req,res) => {
                 carcass:foundCarcass,
                 user:req.session.username
             })
-        }    
+        }
     })
 })
 //=====
